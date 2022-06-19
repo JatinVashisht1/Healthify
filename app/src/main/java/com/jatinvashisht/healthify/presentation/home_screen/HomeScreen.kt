@@ -27,6 +27,7 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.jatinvashisht.healthify.presentation.home_screen.components.FeaturesCardItem
 import com.jatinvashisht.healthify.presentation.home_screen.components.FeaturesCardsEntity
 import com.jatinvashisht.healthify.presentation.util.MyPaddings
@@ -35,7 +36,8 @@ import kotlinx.coroutines.delay
 @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    homeScreenViewModel: HomeScreenViewModel = hiltViewModel()
+    homeScreenViewModel: HomeScreenViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
     val featuresCardList = homeScreenViewModel.lazyRowCardsItemList
     val lazyRowState = rememberLazyListState()
@@ -43,7 +45,7 @@ fun HomeScreen(
     LaunchedEffect(key1 = Unit) {
         for (i in 0 until 3) {
             lazyRowState.animateScrollToItem(i)
-            delay(2000)
+            delay(1000)
         }
         lazyRowState.animateScrollToItem(0)
     }
@@ -54,8 +56,10 @@ fun HomeScreen(
             drawRect(
                 brush = Brush.verticalGradient(
                     listOf<Color>(
-                        Color(100, 181, 246, 255),
-                        Color(121, 134, 203, 255),
+//                        Color(100, 181, 246, 255),
+//                        Color(121, 134, 203, 255),
+                        Color(1, 87, 155, 255),
+                        Color(13, 71, 161, 255),
                     )
                 )
             )
@@ -75,7 +79,8 @@ fun HomeScreen(
                             .height(200.dp)
                             .width(350.dp)
                             .padding(MyPaddings.Medium.padding)
-                            .shadow(elevation = MyPaddings.Medium.padding)
+                            .shadow(elevation = MyPaddings.Medium.padding),
+                        navController = navController
                     )
                 }
             }
@@ -122,8 +127,9 @@ fun HomeScreen(
                     .fillMaxWidth()
                     .padding(horizontal = MyPaddings.Medium.padding),
                 shape = RoundedCornerShape(4.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(255, 241, 118, 255),
-                    contentColor = Color(121, 134, 203, 255),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(255, 241, 118, 255),
+                    contentColor = Color(57, 73, 171, 255),
                 ),
             ) {
                 Text(text = "Get Random Fruit Info")
@@ -135,7 +141,7 @@ fun HomeScreen(
 @Composable
 fun CustomTextView(first: String, second: String) {
     Row(modifier = Modifier.fillMaxWidth()) {
-        Text(text = first, fontWeight = FontWeight.Bold, color = Color(126, 87, 194, 255))
-        Text(text = second, fontWeight = FontWeight.Normal, color = Color(126, 87, 194, 255))
+        Text(text = first, fontWeight = FontWeight.Bold, color = Color(57, 73, 171, 255))
+        Text(text = second, fontWeight = FontWeight.Normal, color = Color(57, 73, 171, 255))
     }
 }

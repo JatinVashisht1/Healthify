@@ -6,7 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.jatinvashisht.healthify.core.Screen
 import com.jatinvashisht.healthify.presentation.bmi_calculator.BmiCalculator
 import com.jatinvashisht.healthify.presentation.home_screen.HomeScreen
 import com.jatinvashisht.healthify.presentation.theme.HealthifyTheme
@@ -24,8 +27,17 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-//                    HomeScreen()
-                    BmiCalculator(navController = navController)
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.HomeScreen.route
+                    ) {
+                        composable(route = Screen.HomeScreen.route) {
+                            HomeScreen(navController = navController)
+                        }
+                        composable(route = Screen.BmiCalculatorScreen.route) {
+                            BmiCalculator(navController = navController)
+                        }
+                    }
                 }
             }
         }

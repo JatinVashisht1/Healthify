@@ -13,13 +13,21 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavController
+import com.jatinvashisht.healthify.core.Screen
 import com.jatinvashisht.healthify.presentation.util.MyPaddings
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FeaturesCardItem(modifier: Modifier = Modifier, featuresCardsEntity: FeaturesCardsEntity) {
-    Card(modifier = modifier) {
+fun FeaturesCardItem(modifier: Modifier = Modifier, featuresCardsEntity: FeaturesCardsEntity, navController: NavController) {
+    Card(modifier = modifier, onClick = {
+        if(featuresCardsEntity.title == "BMI"){
+            navController.navigate(Screen.BmiCalculatorScreen.route){
+                launchSingleTop = true
+            }
+        }
+    }) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -40,7 +48,7 @@ fun FeaturesCardItem(modifier: Modifier = Modifier, featuresCardsEntity: Feature
                 text = featuresCardsEntity.title,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = MyPaddings.Small.padding),
-                color = Color(126, 87, 194, 255),
+                color = Color(57, 73, 171, 255),
                 fontSize = MaterialTheme.typography.displaySmall.fontSize,
             )
             Spacer(modifier = Modifier.height(MyPaddings.Medium.padding))
@@ -49,7 +57,7 @@ fun FeaturesCardItem(modifier: Modifier = Modifier, featuresCardsEntity: Feature
                 fontWeight = FontWeight.Normal,
                 modifier = Modifier.padding(horizontal = MyPaddings.Small.padding),
                 textAlign = TextAlign.Center,
-                color = Color(126, 87, 194, 200),
+                color = Color(57, 73, 171, 255),
 //                fontSize = MaterialTheme.typography.titleMedium.fontSize,
             )
         }
