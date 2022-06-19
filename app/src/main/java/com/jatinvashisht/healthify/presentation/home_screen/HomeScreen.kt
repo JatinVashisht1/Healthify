@@ -23,6 +23,7 @@ import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -42,6 +43,8 @@ fun HomeScreen(
     val featuresCardList = homeScreenViewModel.lazyRowCardsItemList
     val lazyRowState = rememberLazyListState()
     val randomFruit by homeScreenViewModel.fruitNutrientsItemModelState
+    val context = LocalContext.current
+
     LaunchedEffect(key1 = Unit) {
         for (i in 0 until 3) {
             lazyRowState.animateScrollToItem(i)
@@ -80,7 +83,8 @@ fun HomeScreen(
                             .width(350.dp)
                             .padding(MyPaddings.Medium.padding)
                             .shadow(elevation = MyPaddings.Medium.padding),
-                        navController = navController
+                        navController = navController,
+                        context = context
                     )
                 }
             }

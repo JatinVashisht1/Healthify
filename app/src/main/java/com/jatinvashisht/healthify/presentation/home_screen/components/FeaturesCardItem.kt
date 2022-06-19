@@ -1,5 +1,7 @@
 package com.jatinvashisht.healthify.presentation.home_screen.components
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,11 +22,21 @@ import com.jatinvashisht.healthify.presentation.util.MyPaddings
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FeaturesCardItem(modifier: Modifier = Modifier, featuresCardsEntity: FeaturesCardsEntity, navController: NavController) {
+fun FeaturesCardItem(modifier: Modifier = Modifier, featuresCardsEntity: FeaturesCardsEntity, navController: NavController, context: Context) {
     Card(modifier = modifier, onClick = {
-        if(featuresCardsEntity.title == "BMI"){
-            navController.navigate(Screen.BmiCalculatorScreen.route){
-                launchSingleTop = true
+        when (featuresCardsEntity.title) {
+            "BMI" -> {
+                navController.navigate(Screen.BmiCalculatorScreen.route){
+                    launchSingleTop = true
+                }
+            }
+            "WHO Guidelines" -> {
+                navController.navigate(Screen.WhoGuidelinesScreen.route){
+                    launchSingleTop = true
+                }
+            }
+            else -> {
+                Toast.makeText(context, "Not implemented yet!", Toast.LENGTH_LONG).show()
             }
         }
     }) {

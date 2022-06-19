@@ -13,6 +13,7 @@ import com.jatinvashisht.healthify.core.Screen
 import com.jatinvashisht.healthify.presentation.bmi_calculator.BmiCalculator
 import com.jatinvashisht.healthify.presentation.home_screen.HomeScreen
 import com.jatinvashisht.healthify.presentation.theme.HealthifyTheme
+import com.jatinvashisht.healthify.presentation.who_guidelines.WhoGuidelinesScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,6 +37,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.BmiCalculatorScreen.route) {
                             BmiCalculator(navController = navController)
+                        }
+                        composable(route = Screen.WhoGuidelinesScreen.route){
+                            WhoGuidelinesScreen(navController = navController)
                         }
                     }
                 }
