@@ -10,7 +10,7 @@
 
 ### How to use
 - Download the app and make it transfer in `smartphone` with `Android version 5.1+`, i.e, more than Android lollipop.
-- In the file-manager of the smartphone locate the `.opk` file and tap on it.
+- In the file-manager of the smartphone locate the `.apk` file and tap on it.
 - If it is showing it as unsafe that is because app is not published on google play-store.
     - In this case simply click to `install anyway`, it will NOT harm your device in any manner.
 - After the app is installed you can see the app in your apps section of smartphone.
