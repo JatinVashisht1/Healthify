@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import com.jatinvashisht.healthify.presentation.bmi_calculator.BmiCalculator
 import com.jatinvashisht.healthify.presentation.home_screen.HomeScreen
 import com.jatinvashisht.healthify.presentation.theme.HealthifyTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +23,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeScreen()
+                    val navController = rememberNavController()
+//                    HomeScreen()
+                    BmiCalculator(navController = navController)
                 }
             }
         }
